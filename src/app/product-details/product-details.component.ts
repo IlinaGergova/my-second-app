@@ -13,10 +13,6 @@ export class ProductDetailsComponent implements OnInit {
   product: Product | undefined;
 
   constructor(private route: ActivatedRoute, private cartService: CartService) {
-    const routeParams = this.route.snapshot.paramMap;
-    const productIdFromRoute = Number(routeParams.get('productId'));
-    this.product = products.find(product => product.id === productIdFromRoute);
-
   }
 
   addToCart(product: Product) {
@@ -25,6 +21,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('productId'));
+    this.product = products.find(product => product.id === productIdFromRoute);
+
   }
 
 }
